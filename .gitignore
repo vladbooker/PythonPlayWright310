@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual Environment
+.venv/
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Playwright специфичное
+test-results/
+allure-results/
+playwright-report/
+
+# Pytest cache
+.pytest_cache/
+
+# Download files
+download/
+# или если хотите сохранить пустую папку, создайте .gitkeep:
+# download/.gitkeep
