@@ -12,10 +12,6 @@ def test_tc_01_001_01(page):
     submit_btn_loc = "button[name='Submit']"
     user_settings_btn_loc = "a[id='root-action-ManageJenkinsAction']"
 
-    page.locator(username_field_loc).fill(username)
-    page.locator(password_field_loc).fill(password)
-    page.locator(submit_btn_loc).click()
-
     with page.expect_response(lambda response: response.status) as response_info:  # конструкция для перехвата и проверки сетевых ответов при взаимодействии с веб-страницей
      page.locator(user_settings_btn_loc).click()
 

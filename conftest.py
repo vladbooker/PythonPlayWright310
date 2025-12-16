@@ -36,22 +36,47 @@ def driver_demoqa():
     playwright.stop()
 
 
+api_token = "11e0fbe05faa66ec576c17ba64859bfa52"
+user_name = "Vlad"
+url = "http://localhost:8080/"
+
 @pytest.fixture
-def page(playwright: Playwright):
+def get_coockies(playwright: Playwright):
+
+    username_field_loc = "input[id='j_username']"
+    password_field_loc = "input[id='j_password']"
+    submit_btn_loc = "button[name='Submit']"
+    username = "Vlad"
+    password = "sifiny99"
+
+    browser = playwright.chromium.launch()
+    context = browser.new_context(
+        base_url="http://localhost:8080/login?from=%2F"
+    )
+    page = context.new_page()
+    page.goto("/")
+    page.locator(username_field_loc).fill(username)
+    page.locator(password_field_loc).fill(password)
+    page.locator(submit_btn_loc).click()
+    cookies = context.cookies()
+    page.close()
+    context.close()
+    browser.close()
+    return cookies
+
+@pytest.fixture
+def page(playwright: Playwright, get_coockies):
     browser = playwright.chromium.launch(headless=False)
     context = browser.new_context(
         viewport=ViewportSize(width=1440, height=980),
         base_url="http://localhost:8080"
     )
+    context.add_cookies(get_coockies)
     page = context.new_page()
     yield page
     page.close()
     context.close()
     browser.close()
-
-api_token = "11e0fbe05faa66ec576c17ba64859bfa52"
-user_name = "Vlad"
-url = "http://localhost:8080/"
 
 def get_all_jobs():
     response = requests.get(

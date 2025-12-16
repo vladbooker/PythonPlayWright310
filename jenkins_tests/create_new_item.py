@@ -18,9 +18,9 @@ def test_tc_01_001_01(page):
     logo_loc = "a[class='app-jenkins-logo']"
     created_item_loc = f"td > a[href='job/{new_item_name}/']"
 
-    page.locator(username_field_loc).fill(username)
-    page.locator(password_field_loc).fill(password)
-    page.locator(submit_btn_loc).click()
+    # page.locator(username_field_loc).fill(username)
+    # page.locator(password_field_loc).fill(password)
+    # page.locator(submit_btn_loc).click()
 
     page.locator(new_item_btn_loc).click()  # Клик по кнопке new item
     page.locator(item_name_field_loc).fill(new_item_name)
