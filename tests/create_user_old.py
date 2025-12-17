@@ -1,5 +1,5 @@
 import random
-from data.generator.generator import CreateUserGenerator
+from data.generator.user_generator import CreateUserGenerator
 
 generator = CreateUserGenerator()
 
