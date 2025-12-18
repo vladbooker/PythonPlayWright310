@@ -1,5 +1,4 @@
 import random
-
 from data.endpoints import Endpoints
 from data.error_message import ErrorMessage
 from data.generator.user_generator import CreateUserGenerator

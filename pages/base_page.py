@@ -17,3 +17,7 @@ class BasePage:
     def get_text(self, loc):
         text = self.page.locator(loc).text_content()
         return text
+
+    def all_text(self, loc):
+        text = self.page.locator(loc).all_text_contents()
+        return text
